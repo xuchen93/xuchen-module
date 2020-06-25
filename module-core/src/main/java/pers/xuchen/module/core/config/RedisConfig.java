@@ -1,5 +1,6 @@
 package pers.xuchen.module.core.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+@Slf4j
 @Configuration
 @ConditionalOnProperty(prefix = "spring.redis",name = "host")
 public class RedisConfig {
@@ -22,6 +24,7 @@ public class RedisConfig {
         GenericJackson2JsonRedisSerializer redisSerializer = new GenericJackson2JsonRedisSerializer();
         template.setValueSerializer(redisSerializer);
         template.setHashValueSerializer(redisSerializer);
+        log.info("【xuchen-module-core】注入【redisTemplate】");
         return template;
     }
 }

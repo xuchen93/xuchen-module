@@ -4,9 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import pers.xuchen.module.core.model.R;
-import pers.xuchen.module.core.model.ex.AuthException;
-import pers.xuchen.module.core.model.ex.BusiException;
+import pers.xuchen.module.base.model.R;
+import pers.xuchen.module.base.model.ex.AuthException;
+import pers.xuchen.module.base.model.ex.BusiException;
 
 @Slf4j
 @ControllerAdvice

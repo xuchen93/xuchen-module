@@ -1,8 +1,8 @@
 package pers.xuchen.module.core.util;
 
 import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -12,12 +12,13 @@ import javax.annotation.PostConstruct;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Component
 @ConditionalOnBean(RedisTemplate.class)
 @SuppressWarnings("all")
 public class RedisStore {
     private static RedisTemplate<String, Object> redisTemplate;
-    private static String prefix;
+    private static String prefix = "";
 
     @Autowired
     XuchenProperties xuchenProperties;
@@ -31,6 +32,7 @@ public class RedisStore {
         if (StrUtil.isNotBlank(xuchenProperties.getRedis().getPrefix())) {
             RedisStore.prefix = xuchenProperties.getRedis().getPrefix() + ":";
         }
+        log.info("【xuchen-module-core】初始化【redisStore】");
     }
 
     public static Set<String> getKeys(String key) {
@@ -38,7 +40,7 @@ public class RedisStore {
     }
 
     public static void setValue(String key, Object value) {
-        setValue(prefix + key, value);
+        redisTemplate.opsForValue().set(prefix + key, value);
     }
 
     public static void setValue(String key, Object value, long timeout, TimeUnit timeType) {

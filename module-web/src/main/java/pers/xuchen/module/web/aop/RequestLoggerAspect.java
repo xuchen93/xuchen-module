@@ -9,11 +9,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import pers.xuchen.module.core.model.ex.BusiException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -26,6 +23,10 @@ import java.util.Map;
 @ConditionalOnExpression("${xuchen.module.request.log:false}")
 @Component
 public class RequestLoggerAspect {
+
+    public RequestLoggerAspect() {
+        log.info("【xuchen-module-web】注入【请求日志】拦截");
+    }
 
     @Pointcut("execution(* *..controller..*.*(..))")
     public void controllerPointCut() {

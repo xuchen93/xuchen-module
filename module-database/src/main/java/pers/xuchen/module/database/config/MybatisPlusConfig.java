@@ -8,18 +8,14 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
-import javax.sql.DataSource;
 import java.time.LocalDateTime;
 
 @Slf4j
 @Configuration
-@ConditionalOnBean(DataSource.class)
 @MapperScan("pers.xuchen.module.database.table.dao")
 public class MybatisPlusConfig {
 
@@ -27,7 +23,6 @@ public class MybatisPlusConfig {
      * mybatis-plus分页插件
      */
     @Bean
-    @ConditionalOnMissingBean(PaginationInterceptor.class)
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
     }

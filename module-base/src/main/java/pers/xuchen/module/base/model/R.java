@@ -1,4 +1,4 @@
-package pers.xuchen.module.core.model;
+package pers.xuchen.module.base.model;
 
 import lombok.Data;
 

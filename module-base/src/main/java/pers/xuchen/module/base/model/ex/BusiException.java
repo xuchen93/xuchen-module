@@ -1,4 +1,4 @@
-package pers.xuchen.module.core.model.ex;
+package pers.xuchen.module.base.model.ex;
 
 public class BusiException extends RuntimeException {
     int code;

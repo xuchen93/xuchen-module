@@ -27,9 +27,9 @@ public class RequestHandler implements HandlerInterceptor {
         }
         log.debug("请求头里拿到token：{}",token);
         JSONObject jsonObject = jwtService.parseToken(token);
-        requestContextBean.setUserId(jsonObject.getStr(xuchenProperties.getJwt().getUserId()));
-        requestContextBean.setUserName(jsonObject.getStr(xuchenProperties.getJwt().getUserName()));
-        requestContextBean.setNickName(jsonObject.getStr(xuchenProperties.getJwt().getNickName()));
+        requestContextBean.setUserId(jsonObject.getStr("id"));
+        requestContextBean.setUserName(jsonObject.getStr("userName"));
+        requestContextBean.setNickName(jsonObject.getStr("nickName"));
         requestContextBean.setTokenObj(jsonObject);
         return true;
     }

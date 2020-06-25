@@ -6,24 +6,26 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.ObjectError;
-import pers.xuchen.module.core.model.ex.BusiException;
+import pers.xuchen.module.base.model.ex.BusiException;
 
 import java.util.ArrayList;
 
 @Aspect
 @Slf4j
-@ConditionalOnExpression("${xuchen.module.request.bingCheck:false}||${xuchen.module.request.bing-check:false}")
+@ConditionalOnExpression("${xuchen.module.request.valid:false}")
+@ConditionalOnClass(name = "javax.validation.constraints.NotBlank")
 @Component
 @Order(-100)
 public class RequestBindingAspect {
 
     public RequestBindingAspect() {
-        log.info("加载");
+        log.info("【xuchen-module-web】注入【valid校验】拦截");
     }
 
     @Pointcut("execution(* *..controller..*.*(..))")

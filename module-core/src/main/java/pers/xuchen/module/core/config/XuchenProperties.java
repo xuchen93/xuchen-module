@@ -18,7 +18,10 @@ public class XuchenProperties {
          * 请求日志
          */
         private boolean log = false;
-        private boolean bindCheck = false;
+        /**
+         * 请求参数校验，需依赖spring-boot-starter-validation
+         */
+        private boolean valid = false;
         /**
          * 请求详情
          */
@@ -27,18 +30,20 @@ public class XuchenProperties {
 
     @Data
     public static class RedisModel{
+        /**
+         * key值的前缀
+         */
         private String prefix;
     }
 
     @Data
     public static class JwtModel{
         private String tokenKey = "Authorization";
-        private String secret = "defaultSecret";
-        private int expiresMin = 120;
 
-        //加密对象的字段名
-        private String userId = "id";
-        private String userName = "userName";
-        private String nickName = "nickName";
+        private String secret = "defaultSecret";
+        /**
+         * token过期时长
+         */
+        private int expiresMin = 120;
     }
 }

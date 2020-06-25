@@ -11,7 +11,8 @@
         <version>1.0.0-RELEASE</version>
     </parent>
 
-    <artifactId>module-web</artifactId>
+    <artifactId>module-server</artifactId>
+
 
     <dependencies>
         <dependency>
@@ -19,21 +20,16 @@
             <artifactId>module-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>pers.xuchen.module</groupId>
+            <artifactId>module-web</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>pers.xuchen.module</groupId>
+            <artifactId>module-database</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.auth0</groupId>
-            <artifactId>java-jwt</artifactId>
-            <version>${jwt.version}</version>
-        </dependency>
-
     </dependencies>
 
 </project>

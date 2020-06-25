@@ -1,4 +1,4 @@
-package pers.xuchen;
+package pers.xuchen.module.database;
 
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +14,6 @@ class DataBaseApplicationTests {
 
     @Autowired
     SysUserService sysUserService;
-
-    @Value("${test.key:}")
-    String value;
 
     @Test
     void contextLoads() {
