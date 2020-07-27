@@ -1,10 +1,12 @@
 package com.github.xuchen93.web.aop;
 
+
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import com.github.xuchen93.core.config.XuchenProperties;
+import com.github.xuchen93.model.ex.BusiException;
 import com.github.xuchen93.web.annotation.RedisLimit;
 import com.github.xuchen93.web.common.RequestContextProxy;
-import com.github.xuchen93.web.enums.LimitType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,8 +21,6 @@ import org.springframework.integration.redis.util.RedisLockRegistry;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import com.github.xuchen93.model.ex.BusiException;
-import com.github.xuchen93.core.config.XuchenProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
@@ -63,14 +63,14 @@ public class RequestLimitMultAspect {
         }
 
         switch (redisLimit.limitType()) {
-            case LimitType.USER_NAME:
+            case USER_NAME:
                 String userName = RequestContextProxy.getUserName();
                 if (userName == null) {
                     throw new BusiException(4000, "尚未登录");
                 }
                 key = userName + ":" + key;
                 break;
-            case LimitType.IP:
+            case IP:
                 ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
                 HttpServletRequest request = attributes.getRequest();
                 key = ServletUtil.getClientIP(request) + ":" + key;
