@@ -6,9 +6,9 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>pers.xuchen.module</groupId>
+        <groupId>com.github.xuchen93</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.3-RELEASE</version>
     </parent>
 
     <artifactId>module-core</artifactId>
@@ -16,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>pers.xuchen.module</groupId>
+            <groupId>com.github.xuchen93</groupId>
             <artifactId>module-base</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
@@ -33,6 +33,10 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
             <version>${commons-pool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-redis</artifactId>
         </dependency>
     </dependencies>
 

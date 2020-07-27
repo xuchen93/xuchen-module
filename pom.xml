@@ -8,9 +8,9 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>pers.xuchen.module</groupId>
+    <groupId>com.github.xuchen93</groupId>
     <artifactId>module-parent</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.3-RELEASE</version>
     <name>module-parent</name>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
@@ -21,6 +21,7 @@
         <module>module-database</module>
         <module>module-web</module>
         <module>module-server</module>
+        <module>module-generate</module>
     </modules>
 
     <properties>

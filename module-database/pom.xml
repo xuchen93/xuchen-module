@@ -6,9 +6,9 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>pers.xuchen.module</groupId>
+        <groupId>com.github.xuchen93</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.3-RELEASE</version>
     </parent>
 
     <artifactId>module-database</artifactId>
@@ -16,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>pers.xuchen.module</groupId>
+            <groupId>com.github.xuchen93</groupId>
             <artifactId>module-base</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

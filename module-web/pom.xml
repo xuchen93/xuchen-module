@@ -6,16 +6,16 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>pers.xuchen.module</groupId>
+        <groupId>com.github.xuchen93</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <version>1.0.3-RELEASE</version>
     </parent>
 
     <artifactId>module-web</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>pers.xuchen.module</groupId>
+            <groupId>com.github.xuchen93</groupId>
             <artifactId>module-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
