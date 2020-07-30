@@ -28,7 +28,6 @@ public class CommonUtil {
 
     /**
      * 控制台输出mybatis addList的insert
-     * @param cl
      */
     public static void soutAddListEntity(Class cl) {
         Set<String> set = new HashSet<>();

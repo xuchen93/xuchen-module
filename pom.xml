@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.xuchen93</groupId>
     <artifactId>module-parent</artifactId>
-    <version>1.0.3-RELEASE</version>
+    <version>1.0.5</version>
     <name>module-parent</name>
     <url>https://github.com/xuchen93/module-parent</url>
     <packaging>pom</packaging>
@@ -79,23 +79,33 @@
         </developer>
     </developers>
 
-    <!-- 发布管理信息 -->
-    <distributionManagement>
-        <repository>
-            <!-- 这里的id必须要和全局配置中的release id 一致 -->
-            <id>oss</id>
-            <name>Nexus Release Repository</name>
-            <!-- 这里就是在创建issue成功后，对方回复的release发布地址-->
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <!-- 这里的id必须要和全局配置中的snapshot id 一致 -->
-            <id>oss</id>
-            <name>Nexus Snapshot Repository</name>
-            <!-- 这里就是在创建issue成功后，对方回复的snapshot发布地址-->
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
@@ -143,6 +153,17 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>oss</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

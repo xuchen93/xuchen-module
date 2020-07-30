@@ -19,8 +19,11 @@ public class RequestHandler implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
-        RequestContextBean requestContextBean = SpringUtil.getBean(RequestContextBean.class);
         XuchenProperties xuchenProperties = SpringUtil.getBean(XuchenProperties.class);
+        if (!xuchenProperties.getRequest().isCheckToken()){
+            return true;
+        }
+        RequestContextBean requestContextBean = SpringUtil.getBean(RequestContextBean.class);
         JwtService jwtService = SpringUtil.getBean(JwtService.class);
         String token = request.getHeader(xuchenProperties.getJwt().getTokenKey());
         if (StrUtil.isBlank(token)){

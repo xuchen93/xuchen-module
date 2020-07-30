@@ -15,6 +15,10 @@ public class XuchenProperties {
     @Data
     public static class RequestModel{
         /**
+         * 校验token信息
+         */
+        private boolean checkToken = true;
+        /**
          * 请求日志
          */
         private boolean log = false;

@@ -8,8 +8,9 @@
     <parent>
         <groupId>com.github.xuchen93</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.3-RELEASE</version>
+        <version>1.0.5</version>
     </parent>
 
     <artifactId>module-base</artifactId>
+    <name>${project.artifactId}</name>
 </project>
