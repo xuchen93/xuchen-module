@@ -1,8 +1,12 @@
 package com.github.xuchen93.core.config;
 
 import lombok.Data;
+import org.springframework.boot.ansi.AnsiColor;
+import org.springframework.boot.ansi.AnsiOutput;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 @Data
 @Component
@@ -53,5 +57,19 @@ public class XuchenProperties {
          * token过期时长
          */
         private int expiresMin = 120;
+    }
+
+    @PostConstruct
+    public void init(){
+        String banner = "\n" +
+                "                 _                                          _       _      \n" +
+                "__  ___   _  ___| |__   ___ _ __        _ __ ___   ___   __| |_   _| | ___ \n" +
+                "\\ \\/ / | | |/ __| '_ \\ / _ \\ '_ \\ _____| '_ ` _ \\ / _ \\ / _` | | | | |/ _ \\\n" +
+                " >  <| |_| | (__| | | |  __/ | | |_____| | | | | | (_) | (_| | |_| | |  __/\n" +
+                "/_/\\_\\\\__,_|\\___|_| |_|\\___|_| |_|     |_| |_| |_|\\___/ \\__,_|\\__,_|_|\\___|\n" +
+                "                                                                           \n";
+        System.out.println(AnsiOutput.toString(AnsiColor.YELLOW, banner));
+        System.out.print(AnsiOutput.toString(AnsiColor.BLUE, "project version:\t\t"));
+        System.out.println(AnsiOutput.toString(AnsiColor.GREEN, XuchenModuleVersion.getVersion()));
     }
 }

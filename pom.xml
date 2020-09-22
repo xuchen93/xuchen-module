@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.xuchen93</groupId>
     <artifactId>module-parent</artifactId>
-    <version>1.0.6-SNAPSHOT</version>
+    <version>1.0.6</version>
     <name>module-parent</name>
     <url>https://github.com/xuchen93/module-parent</url>
     <packaging>pom</packaging>
@@ -90,14 +90,17 @@
                     <target>8</target>
                 </configuration>
             </plugin>
-            <!-- Javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <includePom>true</includePom>
+                    <excludeResources>true</excludeResources>
+                    <attach>true</attach>
+                </configuration>
                 <executions>
                     <execution>
-                        <phase>package</phase>
+                        <id>attach-sources</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
@@ -116,7 +119,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
+                        <version>3.2.1</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -130,7 +133,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
+                        <version>3.1.1</version>
                         <executions>
                             <execution>
                                 <phase>package</phase>
@@ -144,7 +147,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <phase>verify</phase>
@@ -157,7 +160,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
+                        <version>1.6.8</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>oss</serverId>
