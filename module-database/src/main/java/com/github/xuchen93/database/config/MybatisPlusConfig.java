@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @Configuration
-@MapperScan("pers.xuchen.module.database.table.dao")
+@MapperScan("com.github.xuchen93.database.table.dao")
 public class MybatisPlusConfig {
 
     /**
