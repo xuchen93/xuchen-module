@@ -24,7 +24,7 @@ public class GenerateInfo {
      */
     private String projectPath = System.getProperty("user.dir") + "/src/main/java";
     /**
-     * 包路径 如pers.xuchen.module.generate
+     * 包路径 如com.github.xuchen93.generate
      */
     private String packageName;
     /**
@@ -66,6 +66,10 @@ public class GenerateInfo {
      */
     private String dbPassword;
 
+    /**
+     * 多模块时用
+     * @param module 模块名
+     */
     public void setModule(String module) {
         this.module = module;
         this.projectPath = StrUtil.format(System.getProperty("user.dir") + StrUtil.format("/{}/src/main/java", module));

@@ -68,7 +68,7 @@ public class XuchenProperties {
                 " >  <| |_| | (__| | | |  __/ | | |_____| | | | | | (_) | (_| | |_| | |  __/\n" +
                 "/_/\\_\\\\__,_|\\___|_| |_|\\___|_| |_|     |_| |_| |_|\\___/ \\__,_|\\__,_|_|\\___|\n" +
                 "                                                                           \n";
-        System.out.println(AnsiOutput.toString(AnsiColor.YELLOW, banner));
+        System.out.println(AnsiOutput.toString(AnsiColor.BRIGHT_YELLOW, banner));
         System.out.print(AnsiOutput.toString(AnsiColor.BLUE, "project version:\t\t"));
         System.out.println(AnsiOutput.toString(AnsiColor.GREEN, XuchenModuleVersion.getVersion()));
     }

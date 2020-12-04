@@ -39,7 +39,7 @@ public class GenerateUtil {
                 .setCapitalMode(true)
                 .setSkipView(true)
                 .setSuperEntityClass(BaseEntity.class)
-                .setSuperEntityColumns("id", "version", "created_user", "created_time", "updated_user", "updated_time")
+                .setSuperEntityColumns("id", "version", "create_user", "create_time", "update_user", "update_time")
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setInclude(ArrayUtil.toArray(generateInfo.getTableList(), String.class));
         new AutoGenerator()

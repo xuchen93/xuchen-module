@@ -10,7 +10,7 @@ public final class HttpPackUtil {
     private static String localUrl = "http://localhost:8080/";
     private static String domain = "localhost";
     private static int port = 8080;
-    private static final String exp = "http://{}:{}/";
+    private static String exp = "http://{}:{}/";
     private static String header = "Authorization";
     private static String token = null;
 
@@ -32,17 +32,40 @@ public final class HttpPackUtil {
         HttpPackUtil.token = token;
     }
 
+    /**
+     * http/https
+     * @param httpType true http,false https
+     */
+    public static void isHttp(boolean httpType){
+        if (httpType){
+            localUrl = "http" + localUrl.substring(localUrl.indexOf(":"));
+            exp = "http" + exp.substring(exp.indexOf(":"));
+        } else {
+            localUrl = "https" + localUrl.substring(localUrl.indexOf(":"));
+            exp = "https" + exp.substring(exp.indexOf(":"));
+        }
+    }
+
     public static HttpRequest createRequest(Method method, String url) {
+        if (url.startsWith("/")){
+            url = url.substring(1);
+        }
         HttpRequest request = new PackHttpRequest(localUrl + url).method(method);
         return setToken(request);
     }
 
     public static HttpRequest createGet(String url) {
+        if (url.startsWith("/")){
+            url = url.substring(1);
+        }
         HttpRequest request = new PackHttpRequest(localUrl + url).method(Method.GET);
         return setToken(request);
     }
 
     public static HttpRequest createPost(String url) {
+        if (url.startsWith("/")){
+            url = url.substring(1);
+        }
         HttpRequest request = new PackHttpRequest(localUrl + url).method(Method.POST);
         return setToken(request);
     }
