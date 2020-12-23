@@ -44,7 +44,7 @@ public class RequestContextBean {
 
     public RequestContextBean() {
         XuchenProperties properties = SpringUtil.getBean(XuchenProperties.class);
-        if (properties.getRequest().isDetail()) {
+        if (properties.getRequest().isDetail() && RequestContextHolder.getRequestAttributes()!=null) {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes.getRequest();
             String userAgent = request.getHeader("User-Agent");

@@ -1,22 +1,17 @@
 package com.github.xuchen93.server.config;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.github.xuchen93.web.common.RequestContextBean;
 import com.github.xuchen93.web.common.RequestContextProxy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 @Slf4j
 @Configuration
 public class MybatisPlusServerConfig {
-
-	@Resource
-	RequestContextBean requestContextBean;
 
 	/**
 	 * 字段填充
@@ -28,18 +23,14 @@ public class MybatisPlusServerConfig {
 			public void insertFill(MetaObject metaObject) {
 				log.debug("【insert】执行字段自动填充");
 				this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
-				if (requestContextBean != null) {
-					this.strictInsertFill(metaObject, "createUser", String.class, RequestContextProxy.getUserName());
-				}
+				this.strictInsertFill(metaObject, "createUser", String.class, RequestContextProxy.getUserName());
 			}
 
 			@Override
 			public void updateFill(MetaObject metaObject) {
 				log.debug("【update】执行字段自动填充");
 				this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
-				if (requestContextBean != null) {
-					this.strictInsertFill(metaObject, "updateUser", String.class, RequestContextProxy.getUserName());
-				}
+				this.strictInsertFill(metaObject, "updateUser", String.class, RequestContextProxy.getUserName());
 			}
 		};
 	}

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.xuchen93</groupId>
     <artifactId>module-parent</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <name>module-parent</name>
     <url>https://github.com/xuchen93/module-parent</url>
     <packaging>pom</packaging>
