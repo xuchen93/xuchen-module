@@ -1,7 +1,7 @@
 package com.github.xuchen93.core.config;
 
 /**
- * @author edwin
+ * @author wangxuchen
  */
 public final class XuchenModuleVersion {
 	private XuchenModuleVersion(){

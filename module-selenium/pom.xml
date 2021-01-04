@@ -11,26 +11,21 @@
         <version>1.0.10</version>
     </parent>
 
-    <artifactId>module-server</artifactId>
+    <artifactId>module-selenium</artifactId>
     <name>${project.artifactId}</name>
 
-
     <dependencies>
+        <!--chromedriver驱动jar包-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.xuchen93</groupId>
             <artifactId>module-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.xuchen93</groupId>
-            <artifactId>module-web</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.xuchen93</groupId>
-            <artifactId>module-database</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
     </dependencies>
-
 </project>
