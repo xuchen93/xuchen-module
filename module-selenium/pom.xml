@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.github.xuchen93</groupId>
         <artifactId>module-parent</artifactId>
-        <version>1.0.10</version>
+        <version>1.0.11</version>
     </parent>
 
     <artifactId>module-selenium</artifactId>
@@ -26,6 +26,12 @@
             <groupId>com.github.xuchen93</groupId>
             <artifactId>module-core</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

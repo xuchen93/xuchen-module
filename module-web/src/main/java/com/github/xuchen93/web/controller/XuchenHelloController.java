@@ -7,7 +7,7 @@ import com.github.xuchen93.model.R;
 
 @RestController
 @RequestMapping("xuchen")
-public class XuchenHelloController {
+public class XuchenHelloController extends BaseController{
 
     @GetMapping("hello")
     public R hello(){

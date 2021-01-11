@@ -80,7 +80,7 @@ public class CommonUtil {
                 String className = StrUtil.subBetween(field.getGenericType().toString(), "<", ">");
                 List<String> list = StrUtil.split(className, '.');
                 fieldClassList.add(Class.forName(className));
-                tempList.add(StrUtil.format("\t\t<collection  property=\"{}\" resultMap=\"{}\"></collection>", field.getName(), StrUtil.lowerFirst(list.get(list.size() - 1))));
+                tempList.add(StrUtil.format("\t\t<collection  property=\"{}\" resultMap=\"{}\"/>", field.getName(), StrUtil.lowerFirst(list.get(list.size() - 1))));
             } else {
                 result.add(StrUtil.format("\t\t<result column=\"{}\" property=\"{}\"/>", StrUtil.toUnderlineCase(field.getName()), field.getName()));
             }
