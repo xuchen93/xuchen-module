@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
+
+    <springProperty scope="context" name="LOG_LEVEL" source="xuchen.module.log.level" defaultValue="INFO"/>
+    <springProperty scope="context" name="ENABLE_FILE" source="xuchen.module.log.enable-file" defaultValue="false"/>
+    <springProperty scope="context" name="LOG_PATH" source="xuchen.module.log.path" defaultValue="./logs"/>
+    <springProperty scope="context" name="PROJECT_NAME" source="xuchen.module.log.project-name" defaultValue="defalutName"/>
+    <contextName>logback</contextName>
+
+    <include resource="xuchen/logback/console-appender.xml" />
+    <include resource="xuchen/logback/file-appender.xml" />
+
+
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="STDOUT" />
+        <if condition='p("ENABLE_FILE").equals("true")'>
+            <then>
+                <appender-ref ref="FILE"/>
+            </then>
+        </if>
+    </root>
+
+</included>

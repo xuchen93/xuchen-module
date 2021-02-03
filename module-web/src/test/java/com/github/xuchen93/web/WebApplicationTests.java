@@ -15,7 +15,6 @@ class WebApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(properties);
     }
 
 }
