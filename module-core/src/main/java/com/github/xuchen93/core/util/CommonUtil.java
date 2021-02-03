@@ -1,4 +1,4 @@
-package com.github.xuchen93.util;
+package com.github.xuchen93.core.util;
 
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;

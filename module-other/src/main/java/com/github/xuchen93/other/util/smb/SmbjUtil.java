@@ -1,7 +1,7 @@
-package com.github.xuchen93.util.smb;
+package com.github.xuchen93.other.util.smb;
 
 import cn.hutool.core.io.IoUtil;
-import com.github.xuchen93.util.model.SmbjResult;
+import com.github.xuchen93.other.model.SmbjResult;
 import com.hierynomus.msdtyp.AccessMask;
 import com.hierynomus.mssmb2.SMB2CreateDisposition;
 import com.hierynomus.mssmb2.SMB2ShareAccess;

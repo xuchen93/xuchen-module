@@ -1,4 +1,4 @@
-package com.github.xuchen93.util.model;
+package com.github.xuchen93.other.model;
 
 import cn.hutool.core.io.IoUtil;
 import com.hierynomus.smbj.SMBClient;

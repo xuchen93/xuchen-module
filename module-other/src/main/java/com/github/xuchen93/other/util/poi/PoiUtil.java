@@ -1,4 +1,4 @@
-package com.github.xuchen93.util.poi;
+package com.github.xuchen93.other.util.poi;
 
 import com.github.xuchen93.model.excel.ExcelCellValueModel;
 import com.github.xuchen93.model.word.WordExcelCellValueModel;
