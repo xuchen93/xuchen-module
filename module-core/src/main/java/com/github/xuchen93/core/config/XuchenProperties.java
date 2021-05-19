@@ -70,10 +70,41 @@ public class XuchenProperties {
      */
     @Data
     public static class LogModel{
-        private String level = "INFO";
+
+        /**
+         * 日志级别
+         */
+        private String logLevel = "INFO";
+        /**
+         * 是否控制台输入日志
+         */
+        private boolean enableStdout = false;
+        /**
+         * 是否同步输出日志文件
+         */
         private boolean enableFile = false;
-        private String path = "./logs";
-        private String projectName = "defalutName";
+        /**
+         * 是否异步输出日志文件
+         */
+        private boolean enableAsyncFile = true;
+        /**
+         * 日志文件输出路径
+         */
+        private String filePath = "./logs";
+        /**
+         * 日志文件输出文件名
+         */
+        private String appName = "defaultName";
+        /**
+         * 日志文件输出频率
+         * ture以天输出
+         * false以小时输出
+         */
+        private boolean fileIsDayType = true;
+        /**
+         * 最大保留时长
+         */
+        private int fileMaxHistory = 60;
     }
 
     @PostConstruct
