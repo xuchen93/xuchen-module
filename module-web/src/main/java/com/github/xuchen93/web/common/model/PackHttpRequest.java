@@ -8,36 +8,36 @@ import cn.hutool.json.JSONUtil;
 
 public class PackHttpRequest extends HttpRequest {
 
-    public PackHttpRequest(String url) {
-        super(url);
-    }
+	public PackHttpRequest(String url) {
+		super(url);
+	}
 
-    @Override
-    public HttpResponse execute() {
-        System.out.println(toString());
-        return super.execute();
-    }
+	@Override
+	public HttpResponse execute() {
+		System.out.println(toString());
+		return super.execute();
+	}
 
-    @Override
-    public HttpResponse executeAsync() {
-        System.out.println(toString());
-        return super.execute(true);
-    }
+	@Override
+	public HttpResponse executeAsync() {
+		System.out.println(toString());
+		return super.execute(true);
+	}
 
-    @Override
-    public HttpRequest method(Method method) {
-        super.method(method);
-        return this;
-    }
+	@Override
+	public HttpRequest method(Method method) {
+		super.method(method);
+		return this;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("请求类型：" + getMethod().name()).append(StrUtil.CRLF);
-        if (super.form() != null) {
-            sb.append("请求表单：").append(StrUtil.CRLF).append(JSONUtil.toJsonPrettyStr(form())).append(StrUtil.CRLF);
-        }
-        sb.append(super.toString());
-        return sb.toString();
-    }
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("请求类型：" + getMethod().name()).append(StrUtil.CRLF);
+		if (super.form() != null) {
+			sb.append("请求表单：").append(StrUtil.CRLF).append(JSONUtil.toJsonPrettyStr(form())).append(StrUtil.CRLF);
+		}
+		sb.append(super.toString());
+		return sb.toString();
+	}
 }

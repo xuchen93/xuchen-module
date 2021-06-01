@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Data
 @Configuration
-@ConditionalOnProperty(prefix = "selenium.chrome.driver",value = "path")
+@ConditionalOnProperty(prefix = "selenium.chrome.driver", value = "path")
 @ConfigurationProperties("selenium.chrome.driver")
 public class ChromeSeleniumConfig {
 	/**

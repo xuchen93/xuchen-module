@@ -31,7 +31,11 @@ import java.util.Map;
 @Slf4j
 public class ExcelToHtmlUtil {
 
-	public static String getExcelInfo(Workbook wb){
+	private static final String[] bordesr = {"border-top:", "border-right:", "border-bottom:", "border-left:"};
+	private static final String[] borderStyles = {"solid ", "solid ", "solid ", "solid ", "solid ", "solid ", "solid ", "solid ",
+			"solid ", "solid", "solid", "solid", "solid", "solid"};
+
+	public static String getExcelInfo(Workbook wb) {
 		if (wb instanceof XSSFWorkbook) {
 			XSSFWorkbook xWb = (XSSFWorkbook) wb;
 			return getExcelInfo(xWb, true);
@@ -44,6 +48,7 @@ public class ExcelToHtmlUtil {
 
 	/**
 	 * 获取表格数据转为html元素
+	 *
 	 * @param wb
 	 * @param isWithStyle
 	 * @return
@@ -65,7 +70,7 @@ public class ExcelToHtmlUtil {
 				sb.append("<tr><td > &nbsp;</td></tr>");
 				continue;
 			}
-			if (row.getZeroHeight()){
+			if (row.getZeroHeight()) {
 				continue;
 			}
 			sb.append("<tr>");
@@ -141,7 +146,7 @@ public class ExcelToHtmlUtil {
 			map1.remove(topRow + "," + topCol);
 		}
 		@SuppressWarnings("rawtypes")
-		Map[] map = { map0, map1 };
+		Map[] map = {map0, map1};
 		return map;
 	}
 
@@ -173,19 +178,19 @@ public class ExcelToHtmlUtil {
 					result = sdf.format(date);
 				} else {
 					double value = cell.getNumericCellValue();
-					if (value == 0){
+					if (value == 0) {
 						result = "";
 					} else {
 						CellStyle style = cell.getCellStyle();
 						String temp = style.getDataFormatString();
-						if (temp.equals("General")){
-							result = NumberUtil.decimalFormat("#",value);
-						}else if (temp.endsWith("%")){
+						if (temp.equals("General")) {
+							result = NumberUtil.decimalFormat("#", value);
+						} else if (temp.endsWith("%")) {
 							//0.00%  0%  百分比
-							result = NumberUtil.decimalFormat(temp,value);
+							result = NumberUtil.decimalFormat(temp, value);
 						} else {
 							//0.00_  小数
-							result = NumberUtil.decimalFormat(temp.replace("_","").replace("0","#"),value);
+							result = NumberUtil.decimalFormat(temp.replace("_", "").replace("0", "#"), value);
 						}
 					}
 				}
@@ -348,10 +353,6 @@ public class ExcelToHtmlUtil {
 		return str;
 	}
 
-	private static final String[] bordesr = { "border-top:", "border-right:", "border-bottom:", "border-left:" };
-	private static final String[] borderStyles = { "solid ", "solid ", "solid ", "solid ", "solid ", "solid ", "solid ", "solid ",
-			"solid ", "solid", "solid", "solid", "solid", "solid" };
-
 	private static String getBorderStyle(HSSFPalette palette, int b, short s, short t) {
 		if (s == 0)
 			return bordesr[b] + borderStyles[s] + "#d0d7e5 1px;";
@@ -377,8 +378,9 @@ public class ExcelToHtmlUtil {
 
 	/**
 	 * 功能描述：将sheet末位为空的行去掉，得到实际有数据的行数 输入参数：<按照参数定义顺序>
+	 * <p>
+	 * :Excel表单封装对象 返回值: 类型 <说明>
 	 *
-	 *            :Excel表单封装对象 返回值: 类型 <说明>
 	 * @return
 	 * @throws Exception
 	 */
@@ -439,7 +441,7 @@ public class ExcelToHtmlUtil {
 					transferedStr = DateUtil.getJavaDate(cell.getNumericCellValue()).toString();
 				} else { // 纯数字
 					double cellValue = cell.getNumericCellValue();
-					transferedStr = NumberUtil.decimalFormat("#.##",cellValue);
+					transferedStr = NumberUtil.decimalFormat("#.##", cellValue);
 				}
 				break;
 			case STRING: // 字符串

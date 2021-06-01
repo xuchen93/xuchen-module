@@ -8,50 +8,51 @@ import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.github.xuchen93.database.base.BaseEntity;
 import com.github.xuchen93.generate.model.GenerateInfo;
 
 public class GenerateUtil {
 
-    public static void generate(GenerateInfo generateInfo) {
-        GlobalConfig config = new GlobalConfig()
-                .setSwagger2(generateInfo.isSwagger())
-                .setActiveRecord(false)
-                .setAuthor(generateInfo.getAuthor())
-                .setOutputDir(generateInfo.getProjectPath())
-                .setFileOverride(false)
-                .setEnableCache(false)
-                .setOpen(false)
-                .setDateType(generateInfo.getDateType())
-                .setServiceName("%sService")
-                .setServiceImplName("%sServiceImpl")
-                .setEntityName("%s")
-                .setMapperName("%sDao")
-                .setXmlName("%sMapper");
-        DataSourceConfig dataSourceConfig = new DataSourceConfig()
-                .setDbType(generateInfo.getDbType())
-                .setUrl(generateInfo.getDbUrl())
-                .setUsername(generateInfo.getDbUserName())
-                .setPassword(generateInfo.getDbPassword())
-                .setDriverName(generateInfo.getDbDriverClass());
-        StrategyConfig strategyConfig = new StrategyConfig()
-                .setEntityLombokModel(generateInfo.isLombok())
-                .setCapitalMode(true)
-                .setSkipView(true)
-                .setSuperEntityClass(BaseEntity.class)
-                .setSuperEntityColumns("id", "version", "create_user", "create_time", "update_user", "update_time")
-                .setNaming(NamingStrategy.underline_to_camel)
-                .setInclude(ArrayUtil.toArray(generateInfo.getTableList(), String.class));
-        new AutoGenerator()
-                .setGlobalConfig(config)
-                .setDataSource(dataSourceConfig)
-                .setStrategy(strategyConfig)
-                .setPackageInfo(
-                        new PackageConfig()
-                                .setParent(generateInfo.getPackageName())
-                                .setMapper("dao")
-                                .setXml("mapper")
-                )
-                .execute();
-    }
+	public static void generate(GenerateInfo generateInfo) {
+		GlobalConfig config = new GlobalConfig()
+				.setSwagger2(generateInfo.isSwagger())
+				.setActiveRecord(false)
+				.setAuthor(generateInfo.getAuthor())
+				.setOutputDir(generateInfo.getProjectPath())
+				.setFileOverride(false)
+				.setEnableCache(false)
+				.setOpen(false)
+				.setDateType(generateInfo.getDateType())
+				.setServiceName("%sService")
+				.setServiceImplName("%sServiceImpl")
+				.setEntityName("%s")
+				.setMapperName("%sDao")
+				.setXmlName("%sMapper");
+		DataSourceConfig dataSourceConfig = new DataSourceConfig()
+				.setDbType(generateInfo.getDbType())
+				.setUrl(generateInfo.getDbUrl())
+				.setUsername(generateInfo.getDbUserName())
+				.setPassword(generateInfo.getDbPassword())
+				.setDriverName(generateInfo.getDbDriverClass());
+		StrategyConfig strategyConfig = new StrategyConfig()
+				.setEntityLombokModel(generateInfo.isLombok())
+				.setCapitalMode(true)
+				.setSkipView(true)
+				.setSuperEntityColumns("id", "version", "create_user", "create_time", "update_user", "update_time")
+				.setNaming(NamingStrategy.underline_to_camel)
+				.setInclude(ArrayUtil.toArray(generateInfo.getTableList(), String.class));
+		if (generateInfo.getSuperEntityClass() != null) {
+			strategyConfig.setSuperEntityClass(generateInfo.getSuperEntityClass());
+		}
+		new AutoGenerator()
+				.setGlobalConfig(config)
+				.setDataSource(dataSourceConfig)
+				.setStrategy(strategyConfig)
+				.setPackageInfo(
+						new PackageConfig()
+								.setParent(generateInfo.getPackageName())
+								.setMapper("dao")
+								.setXml("mapper")
+				)
+				.execute();
+	}
 }

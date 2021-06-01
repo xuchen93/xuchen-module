@@ -16,9 +16,10 @@ public abstract class BaseController {
 
 	/**
 	 * 文件全名
+	 *
 	 * @param fileName
 	 */
-	protected void setDownloadType(String fileName){
+	protected void setDownloadType(String fileName) {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/x-download");
 		response.addHeader("Content-Disposition", "attachment;filename=" + fileName);

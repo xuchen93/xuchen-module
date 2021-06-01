@@ -35,7 +35,7 @@ public class UnionSet {
 	public void merge(int i, int j) {
 		int p1 = find(i);
 		int p2 = find(j);
-		if (p1 == p2){
+		if (p1 == p2) {
 			return;
 		}
 		int newP;//新的根节点

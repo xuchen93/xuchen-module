@@ -62,11 +62,11 @@ public abstract class BaseSeleniumService {
 			long sleepMillis = config.getSleepMillis();
 			if (config.getProxyMethod().contains(method.getName())) {
 				NoSuchElementException tempException = null;
-				if (log.isInfoEnabled()){
+				if (log.isInfoEnabled()) {
 					log.info("重复执行:{}", method.getName());
 				}
 				for (int i = 0; i <= retryCount; i++) {
-					if (log.isInfoEnabled()){
+					if (log.isInfoEnabled()) {
 						log.info("第{}次尝试获取", i + 1);
 					}
 					try {

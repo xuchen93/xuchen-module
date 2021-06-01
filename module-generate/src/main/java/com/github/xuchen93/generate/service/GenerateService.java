@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class GenerateService {
 
-    @Autowired
-    DataSourceProperties dataSourceProperties;
+	@Autowired
+	DataSourceProperties dataSourceProperties;
 
-    public void generate(GenerateInfo info){
-        info.setDBProperties(dataSourceProperties);
-        GenerateUtil.generate(info);
-    }
+	public void generate(GenerateInfo info) {
+		info.setDBProperties(dataSourceProperties);
+		GenerateUtil.generate(info);
+	}
 }

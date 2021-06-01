@@ -55,7 +55,7 @@ public class SeleniumChromeServiceImpl extends BaseSeleniumService {
 	public RemoteWebDriver getDriver() {
 		ChromeDriver chromeDriver = new ChromeDriver(driverService, options);
 		RemoteDriverProxy proxy = new RemoteDriverProxy(chromeDriver);
-		return proxy.getProxyInstance(driverService,options);
+		return proxy.getProxyInstance(driverService, options);
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class SeleniumChromeServiceImpl extends BaseSeleniumService {
 	@Override
 	public RemoteWebDriver getDriver(CommonSeleniumConfig privateSeleniumConfig) {
 		ChromeDriver chromeDriver = new ChromeDriver(driverService, options);
-		RemoteDriverProxy proxy = new RemoteDriverProxy(chromeDriver,privateSeleniumConfig);
-		return proxy.getProxyInstance(driverService,options);
+		RemoteDriverProxy proxy = new RemoteDriverProxy(chromeDriver, privateSeleniumConfig);
+		return proxy.getProxyInstance(driverService, options);
 	}
 }

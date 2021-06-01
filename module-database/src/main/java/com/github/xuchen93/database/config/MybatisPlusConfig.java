@@ -19,49 +19,53 @@ import java.time.LocalDateTime;
 @MapperScan("com.github.xuchen93.database.table.dao")
 public class MybatisPlusConfig {
 
-    /**
-     * mybatis-plus分页插件
-     */
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
-    }
+	/**
+	 * mybatis-plus分页插件
+	 */
+	@Bean
+	public PaginationInterceptor paginationInterceptor() {
+		return new PaginationInterceptor();
+	}
 
-    /**
-     * id生成策略
-     */
-    @Bean
-    @ConditionalOnMissingBean(IdentifierGenerator.class)
-    public IdentifierGenerator idGenerator() {
-        return new DefaultIdentifierGenerator();
-    }
+	/**
+	 * id生成策略
+	 */
+	@Bean
+	@ConditionalOnMissingBean(IdentifierGenerator.class)
+	public IdentifierGenerator idGenerator() {
+		return new DefaultIdentifierGenerator();
+	}
 
-    /**
-     * 乐观锁插件
-     */
-    @Bean
-    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
-        return new OptimisticLockerInterceptor();
-    }
+	/**
+	 * 乐观锁插件
+	 */
+	@Bean
+	public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+		return new OptimisticLockerInterceptor();
+	}
 
-    /**
-     * 字段填充
-     */
-    @Bean
-    @ConditionalOnMissingBean(MetaObjectHandler.class)
-    public MetaObjectHandler metaObjectHandler() {
-        return new MetaObjectHandler() {
-            @Override
-            public void insertFill(MetaObject metaObject) {
-                log.debug("【insert】执行字段自动填充");
-                this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
-            }
+	/**
+	 * 字段填充
+	 */
+	@Bean
+	@ConditionalOnMissingBean(MetaObjectHandler.class)
+	public MetaObjectHandler metaObjectHandler() {
+		return new MetaObjectHandler() {
+			@Override
+			public void insertFill(MetaObject metaObject) {
+				if (log.isDebugEnabled()) {
+					log.debug("【insert】执行字段自动填充");
+				}
+				this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
+			}
 
-            @Override
-            public void updateFill(MetaObject metaObject) {
-                log.debug("【update】执行字段自动填充");
-                this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
-            }
-        };
-    }
+			@Override
+			public void updateFill(MetaObject metaObject) {
+				if (log.isDebugEnabled()) {
+					log.debug("【update】执行字段自动填充");
+				}
+				this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+			}
+		};
+	}
 }

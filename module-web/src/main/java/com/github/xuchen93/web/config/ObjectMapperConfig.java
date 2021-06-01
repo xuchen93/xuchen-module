@@ -17,16 +17,16 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class ObjectMapperConfig {
 
-    @Bean
-    public ObjectMapper objectMapper() {
-        SimpleModule javaTimeModule = new JavaTimeModule()
-                .addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)))
-                .addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)));
-        return new ObjectMapper()
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .registerModule(javaTimeModule)
-                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-                .disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
-    }
+	@Bean
+	public ObjectMapper objectMapper() {
+		SimpleModule javaTimeModule = new JavaTimeModule()
+				.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)))
+				.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DatePattern.NORM_DATETIME_PATTERN)));
+		return new ObjectMapper()
+				.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
+				.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+				.registerModule(javaTimeModule)
+				.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+				.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
+	}
 }

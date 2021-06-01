@@ -15,17 +15,17 @@ import java.time.LocalDateTime;
  */
 @Data
 public class BaseEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @TableId(type = IdType.ASSIGN_ID)
-    protected Long id;
-    @TableField(fill = FieldFill.INSERT)
-    protected String createUser;
-    @TableField(fill = FieldFill.INSERT)
-    protected LocalDateTime createTime;
-    @TableField(fill = FieldFill.UPDATE)
-    protected String updateUser;
-    @TableField(fill = FieldFill.UPDATE)
-    protected LocalDateTime updateTime;
-    @Version
-    protected Long version;
+	private static final long serialVersionUID = 1L;
+	@TableId(type = IdType.ASSIGN_ID)
+	protected Long id;
+	@TableField(fill = FieldFill.INSERT)
+	protected String createUser;
+	@TableField(fill = FieldFill.INSERT)
+	protected LocalDateTime createTime;
+	@TableField(fill = FieldFill.UPDATE)
+	protected String updateUser;
+	@TableField(fill = FieldFill.UPDATE)
+	protected LocalDateTime updateTime;
+	@Version
+	protected Long version;
 }

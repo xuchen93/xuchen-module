@@ -9,15 +9,15 @@ import lombok.Data;
 
 @Data
 public class SmbjResult {
-    private SMBClient client;
-    private Connection connection;
-    private Session session;
-    private DiskShare diskShare;
+	private SMBClient client;
+	private Connection connection;
+	private Session session;
+	private DiskShare diskShare;
 
-    public void close(){
-        IoUtil.close(client);
-        IoUtil.close(diskShare);
-        IoUtil.close(connection);
-        IoUtil.close(session);
-    }
+	public void close() {
+		IoUtil.close(client);
+		IoUtil.close(diskShare);
+		IoUtil.close(connection);
+		IoUtil.close(session);
+	}
 }

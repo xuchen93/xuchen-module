@@ -26,39 +26,38 @@ import java.util.Map;
 @Order(100)
 public class RequestLoggerAspect {
 
-    public RequestLoggerAspect() {
-        log.info("【xuchen-module-web】注入【请求日志】拦截");
-    }
+	public RequestLoggerAspect() {
+		log.info("【xuchen-module-web】注入【请求日志】拦截");
+	}
 
-    @Pointcut("execution(* *..controller..*.*(..))")
-    public void controllerPointCut() {
+	private static String getJsonParams(Map<String, String[]> map) {
+		Map<String, List<String>> paramsMap = new HashMap<>();
+		for (Map.Entry<String, String[]> entry : map.entrySet()) {
+			paramsMap.put(entry.getKey(), CollUtil.newArrayList(entry.getValue()));
+		}
+		return JSONUtil.toJsonStr(paramsMap);
+	}
 
-    }
+	@Pointcut("execution(* *..controller..*.*(..))")
+	public void controllerPointCut() {
 
-    @Around("controllerPointCut()")
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
-        ArrayList<Object> objects = CollUtil.newArrayList(joinPoint.getArgs());
-        if ("get".equalsIgnoreCase(request.getMethod())) {
-            log.info("[Get]请求[{}]入参:[{}]", request.getRequestURI(), getJsonParams(request.getParameterMap()));
-        } else {
-            log.info("[Post]请求[{}]入参:[{}]", request.getRequestURI(), JSONUtil.toJsonStr(objects));
-        }
-        long millis = System.currentTimeMillis();
-        Object result = joinPoint.proceed();
-        log.info("耗时：[{}ms]", System.currentTimeMillis() - millis);
-        log.info("返回：[{}]", JSONUtil.toJsonStr(result));
-        return result;
-    }
+	}
 
-
-    private static String getJsonParams(Map<String, String[]> map) {
-        Map<String, List<String>> paramsMap = new HashMap<>();
-        for (Map.Entry<String, String[]> entry : map.entrySet()) {
-            paramsMap.put(entry.getKey(), CollUtil.newArrayList(entry.getValue()));
-        }
-        return JSONUtil.toJsonStr(paramsMap);
-    }
+	@Around("controllerPointCut()")
+	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpServletRequest request = attributes.getRequest();
+		ArrayList<Object> objects = CollUtil.newArrayList(joinPoint.getArgs());
+		if ("get".equalsIgnoreCase(request.getMethod())) {
+			log.info("[Get]请求[{}]入参:[{}]", request.getRequestURI(), getJsonParams(request.getParameterMap()));
+		} else {
+			log.info("[Post]请求[{}]入参:[{}]", request.getRequestURI(), JSONUtil.toJsonStr(objects));
+		}
+		long millis = System.currentTimeMillis();
+		Object result = joinPoint.proceed();
+		log.info("耗时：[{}ms]", System.currentTimeMillis() - millis);
+		log.info("返回：[{}]", JSONUtil.toJsonStr(result));
+		return result;
+	}
 }
 

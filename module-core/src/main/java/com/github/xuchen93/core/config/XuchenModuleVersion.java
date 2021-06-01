@@ -4,7 +4,7 @@ package com.github.xuchen93.core.config;
  * @author wangxuchen
  */
 public final class XuchenModuleVersion {
-	private XuchenModuleVersion(){
+	private XuchenModuleVersion() {
 
 	}
 

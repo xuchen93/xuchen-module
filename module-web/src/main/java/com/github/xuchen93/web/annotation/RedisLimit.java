@@ -16,27 +16,28 @@ import java.util.concurrent.TimeUnit;
 @Documented
 public @interface RedisLimit {
 
-    /**
-     * key
-     */
-    String key() default "";
+	/**
+	 * key
+	 */
+	String key() default "";
 
-    /**
-     * 时间值
-     */
-    int period();
-    /**
-     * 时间范围
-     */
-    TimeUnit timeunit();
+	/**
+	 * 时间值
+	 */
+	int period();
 
-    /**
-     * 一定时间内最多访问次数
-     */
-    int count();
+	/**
+	 * 时间范围
+	 */
+	TimeUnit timeunit();
 
-    /**
-     * 限流的依据
-     */
-    LimitType limitType() default LimitType.IP;
+	/**
+	 * 一定时间内最多访问次数
+	 */
+	int count();
+
+	/**
+	 * 限流的依据
+	 */
+	LimitType limitType() default LimitType.IP;
 }
